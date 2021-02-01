@@ -1,0 +1,27 @@
+/* Hacemos que las cartas tengan una sombra para diferenciarlas del fondo, redondeamos sus esquinas y adaptamos su tamaño */
+.card {
+  transition: 0.3s;
+  width: fit-content;
+  border-radius: 5px;
+  margin: auto;
+  border: none !important;
+}
+
+/* Hacemos más fuerte la sombra al pasar el ratón por encima */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
+}
+
+/* Añadimos un margen a la información de la carta */
+.cardData {
+  background-color: #14213D;
+  color: #FCA311;
+  font-family: "Pooh";
+  padding: 2px 16px;
+}
+
+/* Redondeamos las imágenes de las cartas y adaptamos su tamaño */
+.cardImg {
+  width: 300px;
+  -webkit-user-drag: none;
+}
