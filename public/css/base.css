@@ -31,11 +31,11 @@ nav {
   background-color: #14213D !important;
 }
 
-a.nav-link {
+a.nav-link, #footer-link {
   color: #E5E5E5;
   transition: 0.3s;
 }
 
-a.nav-link:hover {
+a.nav-link:hover, #footer-link:hover {
   color: #FCA311;
 }
