@@ -15,6 +15,6 @@ class MainController extends AbstractController {
     return $this->render('home.html.twig');
   }
 
-
+  
 
 }
