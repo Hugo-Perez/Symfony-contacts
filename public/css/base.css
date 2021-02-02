@@ -36,6 +36,10 @@ a.nav-link, #footer-link {
   transition: 0.3s;
 }
 
+a.nav-link.active {
+  color: #FCA311;
+}
+
 a.nav-link:hover, #footer-link:hover {
   color: #FCA311;
 }

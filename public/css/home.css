@@ -5,18 +5,19 @@
   border-radius: 5px;
   margin: auto;
   border: none !important;
+  color: #E5E5E5;
+  font-family: "Pooh";
 }
 
 /* Hacemos más fuerte la sombra al pasar el ratón por encima */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
+  color: #FCA311 !important;
 }
 
 /* Añadimos un margen a la información de la carta */
 .cardData {
   background-color: #14213D;
-  color: #FCA311;
-  font-family: "Pooh";
   padding: 2px 16px;
 }
 

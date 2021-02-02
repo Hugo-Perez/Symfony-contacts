@@ -9,7 +9,7 @@ class MainController extends AbstractController {
 
   /**
    * @Route("/",
-   * name="index")
+   * name="home")
    */
   public function index():Response {
     return $this->render('home.html.twig');

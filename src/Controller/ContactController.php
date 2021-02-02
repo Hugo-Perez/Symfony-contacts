@@ -10,11 +10,10 @@ class ContactController extends AbstractController
 {
     /**
      * @Route("/list/{type}", 
-     * name="general",
-     * req={})
+     * name="list")
      */
-    public function general():Response {
-        $this->render('contact/list.html.twig', 
-        [])
+    public function general($type): Response
+    {
+        return $this->render('contact/list.html.twig', ['type' => $type]);
     }
 }
