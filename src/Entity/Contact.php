@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactRepository;
+use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ContactRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
  */
-class Contact
+class Contact implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -46,6 +47,18 @@ class Contact
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $email;
+
+    public function jsonSerialize()
+    {
+        return array(
+            'id' => $this->id,
+            'name' => $this->name,
+            'last_name' => $this->lastName,
+            'telephone' => $this->telephone,
+            'notes' => $this->notes,
+            'type' => $this->type
+        );
+    }
 
     public function getId(): ?int
     {

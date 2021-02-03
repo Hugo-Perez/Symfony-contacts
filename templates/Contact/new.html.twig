@@ -1,1 +1,17 @@
-{{ form(form) }}
+{% extends "base.html.twig" %}
+
+{% block title %}
+  New contact 
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href={{asset('css/form.css')}}>
+{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block content %}
+  <div class="container">
+    {{ form(form) }}
+  </div>
+{% endblock %}

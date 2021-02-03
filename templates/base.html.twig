@@ -21,17 +21,21 @@
                 {% else %} 
                     class="navbar-brand nav-link" 
                 {% endif %}
-                href={{path('home')}}>Mi agenda</a>
+                href={{path('home')}}>My contacts</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#links" aria-controls="links" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="links">
-                <!--div class="navbar-nav">
-                    <a class="nav-link" >Example</a>
-                    <a class="nav-link" >Example2</a>
-                    <a class="nav-link" >Example3</a>
+                    <div class="navbar-nav">
+                        <a 
+                        {% if route_name == "new" %} 
+                            class="nav-link active" 
+                        {% else %} 
+                            class="nav-link" 
+                        {% endif %}
+                        href={{path('new')}} >New Contact</a>
+                    </div>
                 </div>
-                </div -->
             </div>
         </nav>
         {% endblock %}
@@ -45,8 +49,8 @@
         </footer>
         {% endblock %}
         {% block javascript %}
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         {% endblock %}
     </body>
     {% endblock %}

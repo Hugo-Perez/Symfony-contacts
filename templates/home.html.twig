@@ -2,7 +2,7 @@
 
 {% block title %}Home{% endblock %}
 {% block stylesheets %}
-  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href={{asset('css/home.css')}}>
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
               class="cardImg"
             />
             <div class="cardData">
-              <h4 class="cardTitle">Agenda normal</h4>
+              <h4 class="cardTitle">Normal contacts</h4>
             </div>
           </div>
         </a>
@@ -29,11 +29,11 @@
               class="cardImg"
             />
             <div class="cardData">
-              <h4 class="cardTitle">Agenda general</h4>
+              <h4 class="cardTitle">General contacts</h4>
             </div>
           </div>
         </a>
-        <a class="card-link" href={{path('list', {'type': 'profesional'})}}>
+        <a class="card-link" href={{path('list', {'type': 'professional'})}}>
           <div class="card">
             <img
               src="../resources/img/prof.png"
@@ -41,7 +41,7 @@
               class="cardImg"
             />
             <div class="cardData">
-              <h4 class="cardTitle">Agenda profesional</h4>
+              <h4 class="cardTitle">Professional contacts</h4>
             </div>
           </div>
         </a>
