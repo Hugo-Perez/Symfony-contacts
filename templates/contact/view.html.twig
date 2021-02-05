@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  {{ contact.name }} details
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href={{asset('css/form.css')}}>
+{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block content %}
+  <div class="container">
+    {{form_start(form)}}
+      {{ form_row(form.name, { 'attr':{'disabled':'disabled'} }) }}
+      {{ form_row(form.lastName, { 'attr':{'disabled':'disabled'} }) }}
+      {{ form_row(form.telephone, { 'attr':{'disabled':'disabled'} }) }}
+      {{ form_row(form.email, { 'attr':{'disabled':'disabled'} }) }}
+      {{ form_row(form.type, { 'attr':{'disabled':'disabled'} }) }}
+      {{ form_row(form.notes, { 'attr':{'disabled':'disabled'} }) }}
+      <button class="btn btn-primary" type="button" onClick="window.history.back();">Go back</button>
+    {{ form_end(form) }}
+  </div>
+{% endblock %}

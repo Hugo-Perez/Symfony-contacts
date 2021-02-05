@@ -54,7 +54,7 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
-            return $this->redirectToRoute('creation_success');
+            return $this->render('Contact/success_create.html.twig');
         }
         
         return $this->render('Contact/new.html.twig', ['form' => $form->createView()]);
@@ -67,38 +67,66 @@ class ContactController extends AbstractController
     public function viewContact($id): Response
     {
         $contact = $this->getDoctrine()
-            ->getRepository(Contact::class)
-            ->find($id);
-        $jsonContact = json_encode($contact);
-        return new Response($jsonContact);
+        ->getRepository(Contact::class)
+        ->find($id);
+
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->remove('create');
+
+        return $this->render('Contact/view.html.twig', [
+            'form' => $form->createView(),
+            'contact' => $contact
+        ]);
     }
 
     /**
      * @Route("/edit/{id}", 
      * name="edit")
      */
-    public function editContact(): Response
+    public function editContact(Request $request, $id): Response
     {
-        return $this->render('Contact/success.html.twig');
+        $contact = $this->getDoctrine()
+        ->getRepository(Contact::class)
+        ->find($id);
+
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->remove('create');
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $contact = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            return $this->render('Contact/success_edit.html.twig', [
+                'id' => $contact->getId()
+            ]);
+        }
+
+        return $this->render('Contact/edit.html.twig', [
+           'form' => $form->createView(),
+           'contact' => $contact
+        ]);
     }
 
     /**
      * @Route("/delete/{id}", 
      * name="delete")
      */
-    public function deleteContact(): Response
+    public function deleteContact($id): Response
     {
-        return $this->render('Contact/success.html.twig');
-    }
+        $contact = $this->getDoctrine()
+        ->getRepository(Contact::class)
+        ->find($id);
 
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($contact);
+        $entityManager->flush();
 
-     /**
-     * @Route("/success", 
-     * name="creation_success")
-     */
-    public function creationSuccess(): Response
-    {        
-        return $this->render('Contact/success.html.twig');
+        return $this->render('Contact/success_delete.html.twig');
     }
     
 }

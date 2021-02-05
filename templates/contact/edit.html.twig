@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  Edit {{contact.name}} 
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href={{asset('css/form.css')}}>
+{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block content %}
+  <div class="container">
+    {{form_start(form)}}
+       {{ form_row(form.name) }}
+      {{ form_row(form.lastName) }}
+      {{ form_row(form.telephone) }}
+      {{ form_row(form.email) }}
+      {{ form_row(form.type) }}
+      {{ form_row(form.notes) }}
+      <div class="btn-group">
+        <button type="submit" id="contact_create" class="btn-primary btn">Update</button>
+        <button class="btn btn-secondary" type="button" onClick="window.history.back();">Go back</button>
+      </div>
+    {{ form_end(form) }}
+  </div>
+{% endblock %}
