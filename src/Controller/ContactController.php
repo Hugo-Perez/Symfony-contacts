@@ -15,7 +15,7 @@ class ContactController extends AbstractController
      * @Route("/list/{type}", 
      * name="list")
      */
-    public function list($type): Response
+    public function list(Request $request, $type): Response
     {
         if ($type == "general") {
             $contacts = $this->getDoctrine()
@@ -28,7 +28,8 @@ class ContactController extends AbstractController
             ->getRepository(Contact::class)
             ->findBy(['type' => $croppedType]);
         }
-
+        $session = $request->getSession();
+        $session->set("lastType", $type);
         return $this->render('Contact/list.html.twig', [
             'type' => $type,
             'list' => $contacts
@@ -101,8 +102,9 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
+            $session = $request->getSession();
             return $this->render('Contact/success_edit.html.twig', [
-                'id' => $contact->getId()
+                'lastType' => $session->get('lastType')
             ]);
         }
 
@@ -116,8 +118,9 @@ class ContactController extends AbstractController
      * @Route("/delete/{id}", 
      * name="delete")
      */
-    public function deleteContact($id): Response
+    public function deleteContact(Request $request, $id): Response
     {
+        
         $contact = $this->getDoctrine()
         ->getRepository(Contact::class)
         ->find($id);
@@ -126,7 +129,10 @@ class ContactController extends AbstractController
         $entityManager->remove($contact);
         $entityManager->flush();
 
-        return $this->render('Contact/success_delete.html.twig');
+        $session = $request->getSession();
+        return $this->render('Contact/success_delete.html.twig', [
+            'lastType' => $session->get('lastType')
+        ]);
     }
     
 }

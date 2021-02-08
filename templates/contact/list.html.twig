@@ -8,7 +8,7 @@
   <div class="btn-group" role="group" aria-label="Basic example">
     <a href={{ path('view', {'id': id}) }} class="btn btn-success">View</a>
     <a href={{ path('edit', {'id': id}) }} class="btn btn-warning">Edit</a>
-    <a href={{ path('delete', {'id': id}) }} class="btn btn-danger" onclick="return confirm('Are you sure?')">
+    <a href="{{ path('delete', {'id': id}) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">
       Delete
     </a>
   </div>
@@ -34,12 +34,12 @@
         <tbody>
         {% for contact in list %}
         <tr>
-          <td>
-          {% if contact.type == "pro" %}
-            🧐
-          {% else %}
-            😎
-          {% endif %}
+          <td style="width:  9%">
+            {% if contact.type == "pro" %}
+              <img src={{ asset('resources/img/pro.png') }} alt="pro">
+            {% else %}
+              <img src={{ asset('resources/img/colega.png') }} alt="normal">
+            {% endif %}
           </td>
           <th scope="row">{{ contact.name }}</th>
           <td>{{ contact.lastName }}</td>
