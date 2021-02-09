@@ -7,6 +7,6 @@
 {% block content %}
   <div class="container jumbotron text-center">
     <h5>Contact deleted successfully!</h5>
-    <button class="btn btn-primary" type="button" onClick="window.history.back();">Go back</button>
+    <a class="btn btn-primary" type="button" href={{ path('home') }}>Go back</a>
   </div>
 {% endblock %}
