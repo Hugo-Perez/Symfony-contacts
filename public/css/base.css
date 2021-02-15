@@ -43,3 +43,26 @@ a.nav-link.active {
 a.nav-link:hover, #footer-link:hover {
   color: #FCA311;
 }
+
+li.dropdown {
+  list-style: none;
+}
+
+div.dropdown-menu.show {
+  background-color: #14213D !important;
+}
+
+a.dropdown-item {
+  color: white !important;
+}
+
+
+a.dropdown-item.active {
+  color: #FCA311 !important;
+  background-color: #14213D !important;
+}
+
+a.dropdown-item:hover {
+  color: #FCA311 !important;
+  background-color: #14213D !important;
+}

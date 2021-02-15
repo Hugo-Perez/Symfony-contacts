@@ -13,6 +13,7 @@
     <body>
         {% block navbar %}
         {% set route_name = app.request.attributes.get('_route') %}
+        {% set list_param = app.request.attributes.get('type') %}
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a 
@@ -26,16 +27,50 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="links">
-                    <div class="navbar-nav">
+                   <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Contacts
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a 
+                            {% if "#{route_name}/#{list_param}" == "list/normal" %} 
+                                class="dropdown-item active" 
+                            {% else %} 
+                                class="dropdown-item" 
+                            {% endif %}
+                            href={{path('list', {'type': 'normal'})}}>
+                            Normal
+                        </a>
+                        <a 
+                            {% if "#{route_name}/#{list_param}" == "list/general" %} 
+                                class="dropdown-item active" 
+                            {% else %} 
+                                class="dropdown-item" 
+                            {% endif %}
+                            href={{path('list', {'type': 'general'})}}>
+                            General
+                        </a>
+                        <a 
+                            {% if "#{route_name}/#{list_param}" == "list/professional" %} 
+                                class="dropdown-item active" 
+                            {% else %} 
+                                class="dropdown-item" 
+                            {% endif %}
+                            href={{path('list', {'type': 'professional'})}}>
+                            Professional
+                        </a>
+                        </div>
+                    </li> 
+                    <a 
                         {% if route_name == "new" %} 
                             class="nav-link active" 
                         {% else %} 
                             class="nav-link" 
                         {% endif %}
-                        href={{path('new')}} >New Contact</a>
-                    </div>
-                </div>
+                        href={{path('new')}} >
+                        New Contact
+                    </a>
+                </div>   
             </div>
         </nav>
         {% endblock %}
