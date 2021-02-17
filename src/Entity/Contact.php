@@ -24,7 +24,7 @@ class Contact implements JsonSerializable
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=50)
      */
     private $lastName;
 
@@ -44,7 +44,7 @@ class Contact implements JsonSerializable
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100)
      */
     private $email;
 
