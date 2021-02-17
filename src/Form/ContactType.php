@@ -25,7 +25,7 @@ class ContactType extends AbstractType
                 'Professional' => "pro",
             ],
         ])
-        ->add('notes', TextareaType::class)
+        ->add('notes', TextareaType::class,  ['required'   => false])
         ->add('create', SubmitType::class);
     }
 

@@ -5,6 +5,8 @@ namespace App\Entity;
 use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ContactRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
@@ -20,16 +22,23 @@ class Contact implements JsonSerializable
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *  pattern="/^[+]{0,1}[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.@0-9]*$/",
+     *  message="Introduce a valid phone number"
+     * )
      */
     private $telephone;
 
@@ -40,11 +49,14 @@ class Contact implements JsonSerializable
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
     private $email;
 
