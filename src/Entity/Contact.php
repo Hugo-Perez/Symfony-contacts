@@ -5,11 +5,16 @@ namespace App\Entity;
 use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ContactRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
+ * @UniqueEntity(
+ *     fields={"telephone"},
+ *     message="A contact with this telephone already exists."
+ * )
  */
 class Contact implements JsonSerializable
 {

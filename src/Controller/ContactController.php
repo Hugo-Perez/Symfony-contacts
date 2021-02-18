@@ -17,6 +17,8 @@ class ContactController extends AbstractController
      */
     public function list(Request $request, $type): Response
     {
+        // Devolvemos una lista de contactos filtrando por el tipo de los mismos
+        // y guardamos el tipo escogido como variable de sesión.
         if ($type == "general") {
             $contacts = $this->getDoctrine()
             ->getRepository(Contact::class)
@@ -42,6 +44,8 @@ class ContactController extends AbstractController
      */
     public function newContact(Request $request): Response
     {
+        // Creamos un contacto vacío que recogerá los datos del formulario de
+        // creación en caso de ser válidos. Después, lo persistimos.
         $contact = new Contact();
 
         $form = $this->createForm(ContactType::class, $contact);
@@ -67,6 +71,7 @@ class ContactController extends AbstractController
      */
     public function viewContact($id): Response
     {
+        //Buscamos el contacto por el id y le devolvemos el formulario para ver los datos.
         $contact = $this->getDoctrine()
         ->getRepository(Contact::class)
         ->find($id);
@@ -86,6 +91,8 @@ class ContactController extends AbstractController
      */
     public function editContact(Request $request, $id): Response
     {
+        // Creamos el formulario sin el boton de crear y 
+        // persistimos los datos que nos manda el usuario desde el formulario.
         $contact = $this->getDoctrine()
         ->getRepository(Contact::class)
         ->find($id);
@@ -120,7 +127,7 @@ class ContactController extends AbstractController
      */
     public function deleteContact(Request $request, $id): Response
     {
-        
+        // Buscamos el contacto por id, lo eliminamos y devolvemos la página de eliminacion correcta.
         $contact = $this->getDoctrine()
         ->getRepository(Contact::class)
         ->find($id);
