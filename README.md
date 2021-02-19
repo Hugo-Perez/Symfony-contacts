@@ -1,5 +1,5 @@
 ## [Agenda Symfony](https://www.github.com/Hugo-Perez/Symfony-contacts)
-Este proyecto consiste en una agenda web en la que podemos ver, crear nuestros contactos.
+Este proyecto consiste en una agenda web en la que podemos ver, crear y editar nuestros contactos.
 
 Está basado en las tecnologías Symfony, SQLite y Twig.
 
